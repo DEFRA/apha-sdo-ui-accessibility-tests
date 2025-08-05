@@ -1,18 +1,14 @@
 import {
   initialiseAccessibilityChecking,
   analyseAccessibility,
-  generateAccessibilityReports,
-  generateAccessibilityReportIndex
+  generateAccessibilityReports
 } from '../utils/accessibility-checking.js'
-import HomePage from '../page-objects/home.page'
+import HomePage from '../page-objects/home.page.js'
 import BatRabiesPage from '../page-objects/bat-rabies.page.js'
 
 describe('Accessibility Testing', () => {
-  before(async () => {
+  it('Should check APHA SDO Frontend for accessiblity issues', async () => {
     await initialiseAccessibilityChecking()
-  })
-
-  it('Should check APHD SDO Frontend for accessiblity issues', async () => {
     await HomePage.open()
     await expect(browser).toHaveTitle(
       'Home | APHA Surveillance data submission portal'
@@ -56,22 +52,6 @@ describe('Accessibility Testing', () => {
       'Form submitted | APHA Surveillance data submission portal'
     )
     await analyseAccessibility()
-  })
-  it('Should check APHD SDO Contact screen for accessiblity issues', async () => {
-    await HomePage.open()
-    await expect(browser).toHaveTitle(
-      'Home | APHA Surveillance data submission portal'
-    )
-    await analyseAccessibility()
-
-    const contactLink = await HomePage.is_link('Contact')
-    contactLink.click()
-    await expect(browser).toHaveUrl(expect.stringContaining('contact'))
-    await analyseAccessibility()
-  })
-
-  after(async () => {
-    generateAccessibilityReports('APHA SDO')
-    generateAccessibilityReportIndex()
+    generateAccessibilityReports('APHA SDO - Bat Rabies Journey')
   })
 })
