@@ -1,4 +1,5 @@
 import allure from 'allure-commandline'
+import { integrateAccessibilityWithAllure } from './allure-accessibility-plugin/allure-accessibility-integration.js'
 
 const debug = process.env.DEBUG
 const oneMinute = 60 * 1000
@@ -117,7 +118,8 @@ export const config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: 'http://localhost:3000',
+  baseUrl: `https://apha-sdo-frontend.${process.env.ENVIRONMENT}.cdp-int.defra.cloud`,
+
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -327,6 +329,7 @@ export const config = {
 
         allure(['open'])
         resolve()
+        integrateAccessibilityWithAllure()
       })
     })
   }
