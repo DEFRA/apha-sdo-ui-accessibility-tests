@@ -6,7 +6,7 @@ import {
 import HomePage from '../page-objects/home.page.js'
 
 describe('Accessibility Testing - Contacts ', () => {
-  it('Should check APHD SDO Contact screen for accessiblity issues', async () => {
+  it('Should check APHA SDO Contact screen for accessiblity issues', async () => {
     await initialiseAccessibilityChecking()
     await HomePage.open()
     await expect(browser).toHaveTitle(

@@ -72,24 +72,7 @@ export const config = {
   connectionRetryCount: 3,
   framework: 'mocha',
 
-  reporters: [
-    [
-      // Spec reporter provides rolling output to the logger so you can see it in-progress
-      'spec',
-      {
-        addConsoleLogs: true,
-        realtimeReporting: true,
-        color: false
-      }
-    ],
-    [
-      // Allure is used to generate the final HTML report
-      'allure',
-      {
-        outputDir: 'allure-results'
-      }
-    ]
-  ],
+  reporters: ['spec'],
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
