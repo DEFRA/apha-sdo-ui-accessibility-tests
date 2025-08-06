@@ -1,4 +1,4 @@
-import * as wcagChecker from '../../dist/wcagchecker.cjs'
+import * as wcagChecker from '../../dist/wcagchecker.js'
 import fs from 'fs'
 import path from 'path'
 
